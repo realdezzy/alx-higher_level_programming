@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 from sys import argv
 
-
-
 if __name__ == "__main__":
     """Print total number of arguments
     then also print argument number and text
@@ -15,5 +13,3 @@ if __name__ == "__main__":
         else print(f"1 argument:")
     for x in range(1, length):
         print(f"{x}: {argv[x]}")
-
-
