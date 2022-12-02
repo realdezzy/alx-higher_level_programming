@@ -3,9 +3,5 @@
 from variable_load_5 import a
 
 
-def print_import():
-    print(f"{a}")
-
-
 if __name__ == "__main__":
-    print_import()
+    print(f"{a}")

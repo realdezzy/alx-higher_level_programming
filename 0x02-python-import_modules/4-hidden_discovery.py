@@ -3,7 +3,10 @@
 import hidden_4
 
 
-def check_hidden():
+if __name__ == "__main__":
+    """Prints methods available in the
+    hidden_4 namespage"""
+
     methds = dir(hidden_4)
     for x in range(len(methds)):
         new_methd = methds[x]
@@ -13,5 +16,3 @@ def check_hidden():
             print(new_methd)
 
 
-if __name__ == "__main__":
-    check_hidden()

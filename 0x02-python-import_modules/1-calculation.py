@@ -5,27 +5,10 @@ a = 10
 b = 5
 
 
-def print_calc(arg):
-    sign = ''
-    func = None
-    if arg == "add":
-        sign = '+'
-        func = add
-    elif arg == "sub":
-        sign = '-'
-        func = sub
-    elif arg == "mul":
-        sign = '*'
-        func = mul
-    elif arg == "div":
-        sign = '/'
-        func = div
-
-    print(f"{a} {sign} {b} = {func(a, b)}")
-
-
 if __name__ == "__main__":
-    print_calc("add")
-    print_calc("sub")
-    print_calc("mul")
-    print_calc("div")
+    """Print various calculation outputs"""
+    print(f"{a} + {b} = {add(a, b)}")
+    print(f"{a} - {b} = {sub(a, b)}")
+    print(f"{a} * {b} = {mul(a, b)}")
+    print(f"{a} / {b} = {div(a, b)}")
+
