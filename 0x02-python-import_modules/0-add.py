@@ -7,4 +7,4 @@ b = 2
 
 if __name__ == "__main__":
     """ Print value of addition"""
-    print(f"{add(a, b)}")
+    print(f"{a} + {b} = {add(a, b)}")
