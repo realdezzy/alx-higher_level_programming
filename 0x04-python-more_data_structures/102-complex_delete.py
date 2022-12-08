@@ -9,5 +9,3 @@ def complex_delete(a_dictionary, value):
     for x in temp_items:
         if x[1] == value:
             a_dictionary.pop(x[0])
-
-
