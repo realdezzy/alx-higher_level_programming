@@ -2,7 +2,7 @@
 
 def uppercase(str):
     """uppercase converts string to uppercase."""
-    str_n = str +'\n'
+    str_n = str + '\n'
     for i in str_n:
         if ord(i) >= 97 and ord(i) <= 122:
             i = chr(ord(i) - 32)
