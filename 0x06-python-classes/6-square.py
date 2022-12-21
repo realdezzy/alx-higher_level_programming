@@ -37,6 +37,7 @@ class Square:
             int:  returns the current square area
         """
         return (self.__size ** 2)
+
     @property
     def size(self):
         """Getter property for private instance(size)
