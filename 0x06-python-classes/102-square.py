@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# 4-square.py
+# 102-square.py
 """Define a class Square."""
 
 
@@ -38,7 +38,6 @@ class Square:
 
     @size.setter
     def size(self, value):
-
         if type(value).__name__ != 'int':
             raise TypeError("size must be an integer")
         if value < 0:
