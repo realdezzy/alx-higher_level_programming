@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # 6-square.py
-
 """Define a class Square."""
+
 
 class Square:
     """A square is a figure with four equal sides and four right angles.
@@ -27,6 +27,7 @@ class Square:
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = position
         self.__size = size
+
     def area(self):
         """Returns the current square area
 
@@ -50,6 +51,7 @@ class Square:
             ValueError: if value of size is less than 0
         """
         return self.__size
+
     @size.setter
     def size(self, value):
 
@@ -72,6 +74,7 @@ class Square:
             [print(" ", end="") for j in range(0, self.__position[0])]
             [print("#", end="") for k in range(0, self.__size)]
             print("")
+
     @property
     def position(self):
         """Getter and setter property for private instance(position)
