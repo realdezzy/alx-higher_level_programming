@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-# 6-square.py
+# 101-square.py
 """Define a class Square."""
 
 
 class Square:
-    """A square is a figure with four equal sides and four right angles.
+    """A square .
 
     Args:
     size(int): size of square
@@ -30,6 +30,7 @@ class Square:
 
     def __str__(self):
         """String  representation of a Square."""
+
         if self.__size != 0:
             [print("") for i in range(0, self.__position[1])]
         for i in range(0, self.__size):
