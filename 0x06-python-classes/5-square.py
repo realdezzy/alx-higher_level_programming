@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # 5-square.py
-
 """Define a class Square."""
+
 
 class Square:
     """A square is a figure with four equal sides and four right angles.
@@ -20,6 +20,7 @@ class Square:
         if size < 0:
             raise ValueError("size must be >= 0")
         self.__size = size
+
     def area(self):
         """Returns the current square area
 
@@ -29,6 +30,7 @@ class Square:
             int:  returns the current square area
         """
         return (self.__size ** 2)
+
     @property
     def size(self):
         """Getter property for private instance(size)
@@ -43,6 +45,7 @@ class Square:
             ValueError: if value of size is less than 0
         """
         return self.__size
+
     @size.setter
     def size(self, value):
 
