@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Full Rectangle""" 
+"""Full Rectangle"""
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
@@ -28,4 +28,3 @@ class Rectangle(BaseGeometry):
         """Returns the area of the rectangle"""
 
         return (self.__width * self.__height)
-
