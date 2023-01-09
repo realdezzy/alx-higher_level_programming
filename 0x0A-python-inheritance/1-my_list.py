@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Simple subclass"""
+"""MyList Simple list subclass"""
 
 
 class MyList(list):
@@ -7,4 +7,5 @@ class MyList(list):
 
     def print_sorted(self):
         """Prints a sorted copy of the list instance"""
+
         print(sorted(self))
