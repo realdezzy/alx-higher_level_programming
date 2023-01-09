@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+""" Take object and return its methods"""
+
 
 def lookup(python_object):
     """ Returns a list of available methods
