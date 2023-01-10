@@ -3,7 +3,7 @@
 import json
 
 
-def to_json_string(my_str):
+def from_json_string(my_str):
     """Returns a deserialized version of my_str"""
 
-    return json.load(my_str)
+    return json.loads(my_str)
