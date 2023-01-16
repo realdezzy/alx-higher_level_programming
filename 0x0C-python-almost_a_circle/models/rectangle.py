@@ -1,133 +1,145 @@
 #!/usr/bin/python3
-"""RectangleModule"""
-
+"""Rectangle class that inherits Base class"""
 from models.base import Base
 
 
 class Rectangle(Base):
-    """ Representation of a rectangle
+    """Rectangle class that inherits Base class
 
-        Args:
-            width (int): width of rect
-            height (int): Height of rect
-            x (int): x param
-            y (int): y param
-            id (int): instance id
-
-        Raises:
-            TypeError: If either of width or height is not an int.
-            ValueError: If either of width or height <= 0.
-            TypeError: If either of x or y is not an int.
-            ValueError: If either of x or y < 0.
+    Attributes:
+        width (int): width of the rectagle
+        height (int): height of the rectangle
+        x (int): x axis
+        y (int): y axis
+        id (int or None): id of the rectangle
 
     """
-
     def __init__(self, width, height, x=0, y=0, id=None):
-
+        super().__init__(id)
         self.__width = width
         self.__height = height
         self.__x = x
         self.__y = y
 
-        super().__init__(id)
-
     @property
     def width(self):
-        """Getter for width"""
-
         return self.__width
 
     @width.setter
-    def width(self, value):
-        """Setter for width
+    def width(self, w):
+        """Width of the rectangle
 
-            Args:
-
-            value (int): new width value
-
-            Raises:
-
-                TypeError: throws when value is not int
+        Args:
+            w (int): the width
 
         """
-
-        if (type(value) is not int):
-            raise TypeError("Only integers can be set")
-
-        self.__width = value
+        if type(w) != int:
+            raise TypeError("width must be an integer")
+        if w <= 0:
+            raise ValueError("width must be > 0")
+        self.__width = w
 
     @property
     def height(self):
-        """Getter for height"""
-
         return self.__height
 
     @height.setter
-    def height(self, value):
-        """Setter for height
+    def height(self, h):
+        """Height of the rectangle
 
-            Args:
-
-            value (int): new value
-
-            Raises:
-
-                TypeError: throws when value is not int
+        Args:
+            h (int): the height
 
         """
-
-        if (type(value) is not int):
-            raise TypeError("Only integers can be set")
-
-        self.__height = value
+        if type(h) != int:
+            raise TypeError("height must be an integer")
+        if h <= 0:
+            raise ValueError("height must be > 0")
+        self.__height = h
 
     @property
     def x(self):
-        """Getter for x"""
-
         return self.__x
 
     @x.setter
-    def x(self, value):
-        """Setter for x
+    def x(self, x_axis):
+        """X axis of the rectangle
 
-            Args:
-
-            value (int): new value
-
-            Raises:
-
-                TypeError: throws when value is not int
+        Args:
+            x_axis (int): the x axis
 
         """
-
-        if (type(value) is not int):
-            raise TypeError("Only integers can be set")
-
-        self.__x = value
-
+        if type(x_axis) != int:
+            raise TypeError("x must be an integer")
+        if x_axis < 0:
+            raise ValueError("x must be >= 0")
+        self.__x = x_axis
 
     @property
     def y(self):
-        """Getter for y"""
-
         return self.__y
 
     @y.setter
-    def y(self, value):
-        """Setter for y
+    def y(self, y_axis):
+        """Y axis of the rectangle
 
-            Args:
-
-            value (int): new value
-
-            Raises:
-
-                TypeError: throws when value is not int
+        Args:
+            y_axis (int): the y axis
 
         """
+        if type(y_axis) != int:
+            raise TypeError("y must be an integer")
+        if y_axis < 0:
+            raise ValueError("y must be >= 0")
+        self.__y = y_axis
 
-        if (type(value) is not int):
-            raise TypeError("Only integers can be set")
+    def area(self):
+        """Area of rectangle"""
 
-        self.__y = value
+        return self.__width * self.__height
+
+    def display(self):
+        """Returns printed rectangle with '#'
+        y is newline, x is space
+        """
+
+        if self.__y != 0:
+            for newline in range(self.__y):
+                print()
+
+        for row in range(self.__height):
+            print((self.__x * " ") + (self.__width * '#'))
+
+    def __str__(self):
+        """Returns formatted information display
+        """
+
+        return "[{}] ({}) {}/{} - {}/{}".format(self.__class__.__name__,
+                                                self.id, self.__x, self.__y,
+                                                self.__width, self.__height)
+
+    def update(self, *args, **kwargs):
+        """Updates rectangle values
+        """
+
+        if len(kwargs) != 0:
+            for k, v in kwargs.items():
+                setattr(self, k, v)
+        elif len(args) != 0:
+            try:
+                self.id = args[0]
+                self.__width = args[1]
+                self.__height = args[2]
+                self.__x = args[3]
+                self.__y = args[4]
+            except IndexError:
+                pass
+        else:
+            print()
+
+    def to_dictionary(self):
+        """Returns dict representation
+        """
+
+        return {'x': self.__x, 'y': self.__y, 'id': self.id,
+                'height': self.__height, 'width': self.__width}
