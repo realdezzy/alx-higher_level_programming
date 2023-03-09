@@ -1,5 +1,5 @@
---List top three
-SELECT city, AVG(value) AS 'avg_temp'
+-- Select top three values 
+SELECT city, AVG(value) AS avg_temp
 FROM temperatures
 WHERE month=7 or month=8
 GROUP BY city
