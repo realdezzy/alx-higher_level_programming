@@ -24,7 +24,7 @@ def find_state():
     cur.execute("""SELECT *\
                 FROM states\
                 WHERE name LIKE BINARY %(search_text)s\
-                ORDER BY id ASC""", {'search-text' : searched}
+                ORDER BY id ASC""", {'search-text': searched}
                 )
     rows = cur.fetchall()
     for row in rows:
