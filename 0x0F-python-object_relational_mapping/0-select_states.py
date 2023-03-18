@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ List States """
 from connect import connect_db
-
+import MySQLdb
 
 def list_states():
     """Lists all states ordered by id"""
