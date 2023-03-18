@@ -1,21 +1,36 @@
 #!/usr/bin/python3
-""" Filter States """
-import MySQLdb #For checker
-from connect import connect_db
+"""
+SelectStates module
+"""
+import MySQLdb
+import sys
 
 
 def filter_states():
-    """Filters all states ordered by id"""
+    """Filters states from database"""
 
-    db = connect_db()
-    cr = db.cursor()
-    cr.execute("""SELECT * FROM states
-            WHERE name  LIKE 'N%'
-            ORDER BY states.id;""")
-    # iterate over the result
-    for row in cr:
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
+
+    db = MySQLdb.connect(host='localhost',
+                         port=3306,
+                         user=username,
+                         passwd=password,
+                         db=database
+                         )
+    cur = db.cursor()
+    cur.execute("SELECT *\
+                FROM states\
+                WHERE name LIKE BINARY 'N%'\
+                ORDER BY id ASC"
+                )
+    rows = cur.fetchall()
+    for row in rows:
         print(row)
+    cur.close()
+    db.close()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     filter_states()

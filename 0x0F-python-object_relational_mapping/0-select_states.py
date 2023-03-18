@@ -1,19 +1,32 @@
 #!/usr/bin/python3
-""" List States """
-from connect import connect_db
+"""
+SelectStates module
+"""
 import MySQLdb
+import sys
 
-def list_states():
-    """Lists all states ordered by id"""
 
-    db = connect_db()
-    cr = db.cursor()
-    cr.execute("""SELECT * FROM states
-            ORDER BY states.id;""")
-    # iterate over the result
-    for row in cr:
+def select_states():
+    """Grabs states from database"""
+
+    username = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
+
+    db = MySQLdb.connect(host='localhost',
+                         port=3306,
+                         user=username,
+                         passwd=password,
+                         db=database
+                         )
+    cur = db.cursor()
+    cur.execute('SELECT * FROM states ORDER BY id ASC')
+    rows = cur.fetchall()
+    for row in rows:
         print(row)
+    cur.close()
+    db.close()
 
 
-if __name__ == '__main__':
-    list_states()
+if __name__ == "__main__":
+    select_states()
