@@ -1,10 +1,13 @@
 #!/usr/bin/python3
-""" Filter States """
+"""
+Filter States
+"""
+from sys import argv
 from connect import connect_db
 
 
 def filter_states():
-    """Filters all states ordered by id"""
+    """Filters state arguments ordered by id"""
 
     db = connect_db()
     cr = db.cursor()
@@ -14,6 +17,7 @@ def filter_states():
     # iterate over the result
     for row in cr:
         print(row)
+    db.close()
 
 
 if __name__ == '__main__':
