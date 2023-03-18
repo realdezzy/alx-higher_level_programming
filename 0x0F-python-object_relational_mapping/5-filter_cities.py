@@ -1,18 +1,18 @@
 #!/usr/bin/python3
 """
-SelectStates module
+Select Cities module
 """
 import MySQLdb
 import sys
 
 
 def find_cities():
-    """Selects all cities in database"""
+    """Finds cities with the given state name in database"""
 
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
-    searched = sys.argv[4]
+    search_term = sys.argv[4]
 
     db = MySQLdb.connect(host='localhost',
                          port=3306,
@@ -21,20 +21,19 @@ def find_cities():
                          db=database
                          )
     cur = db.cursor()
-    cur.execute("SELECT cities.name\
-                FROM cities\
-                INNER JOIN states\
-                ON cities.state_id = states.id\
-                WHERE states.name = %(state_name)s\
-                ORDER BY cities.id ASC",
-                {'state_name': searched}
-                )
+    cur.execute("SELECT name FROM cities\
+                WHERE state_id=(SELECT id FROM states\
+                WHERE name LIKE %(search_state)s)\
+                ", {'search_state': search_term})
+
     rows = cur.fetchall()
-    lst = []
+    inc = 1
     for row in rows:
-        for col in row:
-            lst.append(col)
-    print(', '.join(lst))
+        if inc < len(rows):
+            print(row[0], end=', ')
+            inc += 1
+        else:
+            print(row[0])
     cur.close()
     db.close()
 
