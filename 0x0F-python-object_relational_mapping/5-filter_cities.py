@@ -21,11 +21,13 @@ def find_cities():
                          db=database
                          )
     cur = db.cursor()
-    cur.execute("SELECT name FROM cities\
-                WHERE state_id=(SELECT id FROM states\
-                WHERE name LIKE %(search_state)s)\
-                ORDER BY cities.id ASC\
-                ", {'search_state': search_term})
+    cur.execute("SELECT cities.name\
+                FROM cities\
+                INNER JOIN states\
+                ON cities.state_id = states.id\
+                WHERE states.name = %(search_state)s\
+                ORDER BY cities.id ASC",
+                {'search_state': search_term})
 
     rows = cur.fetchall()
     inc = 1
