@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """ Filter States """
+import MySQLdb #For checker
 from connect import connect_db
 
 

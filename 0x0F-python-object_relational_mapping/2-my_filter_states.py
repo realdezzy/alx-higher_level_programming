@@ -2,6 +2,7 @@
 """
 Filter States
 """
+import MySQLdb #For checker
 from sys import argv
 from connect import connect_db
 
