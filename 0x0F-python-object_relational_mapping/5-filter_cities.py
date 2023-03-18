@@ -24,6 +24,7 @@ def find_cities():
     cur.execute("SELECT name FROM cities\
                 WHERE state_id=(SELECT id FROM states\
                 WHERE name LIKE %(search_state)s)\
+                ORDER BY cities.id ASC\
                 ", {'search_state': search_term})
 
     rows = cur.fetchall()
