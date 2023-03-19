@@ -21,9 +21,9 @@ def find_state():
                          )
     cur = db.cursor()
     cur.execute("""SELECT ct.id, ct.name, st.name\
-			FROM cities AS ct\
-			INNER JOIN states AS st\
-			ON ct.state_id=st.id""")
+            FROM cities AS ct\
+            INNER JOIN states AS st\
+            ON ct.state_id=st.id""")
 
     rows = cur.fetchall()
     for row in rows:
@@ -34,5 +34,3 @@ def find_state():
 
 if __name__ == "__main__":
     find_state()
-
-
