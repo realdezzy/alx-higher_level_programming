@@ -1,7 +1,5 @@
-$(function()
-{
-	$("DIV#red_header").bind("click", function() {
-		$('header').attr('class', 'red');
-	});
+$(function () {
+  $('DIV#red_header').bind('click', function () {
+    $('header').attr('class', 'red');
+  });
 });
-
